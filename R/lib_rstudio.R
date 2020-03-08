@@ -1,0 +1,72 @@
+#' returns the size of the global workspace in a human readable format
+#'
+#' @return the memory usage of the global environment
+#' @export
+#' @import utils
+print_globalenv_size = function() {
+  size = 0
+  for (v123 in ls(envir = globalenv())) {
+    size = size + object.size(get(v123))
+  }
+  print(format(size, units = "auto"))
+}
+
+
+#' returns the size of a single variable in a human readable format
+#'
+#' @param variableName name of the variable for which to display the memory usage.
+#'
+#' @return the size of the variable
+#' @export
+#'
+#' @examples
+#' \donttest{
+#' x = matrix(data = sample(1:10, 1000*1000, replace=TRUE), nrow = 1000, ncol = 1000)
+#' print_var_size(x)
+#' }
+#' @import utils
+print_var_size = function(variableName) {
+  print(format(object.size(variableName), units = "auto"))
+}
+
+
+#' clear the R console in RSTUDIO
+#'
+#' @export
+clc = function() {
+  cat("\014") # sends CTRL+L keybind to console
+}
+
+
+#' \code{clear} will clear the global environment or, when specified, a list of
+#' variables. \code{clear} will then call the garbage collector.
+#'
+#' @param x a vector of variable names to be deleted from the workspace
+#'
+#' @export
+#'
+#' @examples
+#' \donttest{
+#' clear()
+#'
+#' x = 1
+#' y = "foo"
+#' z = data.frame()
+#' clear(c("x","y","z"))
+#' }
+clear = function(x = c()) {
+  if (length(x) == 0) x = ls()
+  rm(list = x, envir = globalenv())
+}
+
+
+#' closes any open plots in the RStudio viewer pane
+#'
+#' @export
+#'
+#' @examples
+#' clearplots()
+#'
+clearplots = function() {
+  if(!is.null(dev.list())) dev.off()
+}
