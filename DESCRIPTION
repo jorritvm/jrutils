@@ -1,7 +1,7 @@
 Package: jrutils
 Type: Package
 Title: utility functions for R
-Version: 0.1.0
+Version: 0.2.0
 Author: Jorrit Vander Mynsbrugge
 Maintainer: Jorrit Vander Mynsbrugge <jorrit.vm@gmail.com>
 Description: Collects a number of utility functions for quicker R data analysis.

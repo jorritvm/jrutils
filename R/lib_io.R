@@ -1,3 +1,55 @@
+#' shortcut to put your matrix, data.frame or data.table on your clipboard.
+#'
+#' @param x 
+#' @param size extend clipboard size if data.table is too large
+#'
+#' @return
+#' @export
+write_table_to_clipboard = function(x, size = 1024) {
+  write.table(x, paste0("clipboard-",size), sep="\t", row.names=FALSE, col.names=TRUE)
+}
+
+#' returns the number of R code lines in current working directory
+#'
+#' @return numeric
+#' @export
+projects_lines_count = function() {
+  return(
+    sum(
+      unlist(
+        lapply(list.files(path = getwd(),
+                          pattern = ".*\\.R$",
+                          full.names = TRUE),
+               function(x) length(readLines(x)) 
+        )   
+      )
+    )
+  )
+}
+
+#' fread should be able to auto detect CSV seperator, this function makes sure
+#' it does so always
+#'
+#' @param fpfn filepath to csv file
+#'
+#' @return csv file contents as data.table
+#' @export
+robust_fread = function(fpfn, header = "auto", skip = 0) {
+  if (file.exists(fpfn)) {
+    x = fread(fpfn, header = header, skip = skip)
+    if (ncol(x) == 1) {
+      x = fread(fpfn, sep = ",", header = header, skip = skip)
+    }
+    if (ncol(x) == 1) {
+      x = fread(fpfn, sep = ";", header = header, skip = skip)
+    }
+  } else {
+    x = NULL
+    warning(paste("File not found:", fpfn))
+  }
+  return(x)
+}  
+
 #' replaces backslashes with forward slashes in a path on the clipboard
 #'
 #' @export
@@ -72,4 +124,27 @@ wtf = function (x) {
   } else {
     shell.exec(preferredFilePath)
   }
+}
+
+
+#' utility function to combine pieces of a path into a nice character path
+#'
+#' @param ... 
+#'
+#' @return
+#' @export
+combine_path = function(...) {
+  all_pieces = unlist(list(...))
+  path = ""
+  for (piece in all_pieces) {
+    # replace double backslashes with a single forward slash
+    piece = gsub(pattern = "\\\\", "/", piece)
+    # strip leading and trailing slash from piece
+    if (substr(piece, start = 1, stop = 1) == "/") piece = substr(piece, start = 2, stop = nchar(piece))
+    if (substr(piece, start = nchar(piece), stop = nchar(piece)) == "/") piece = substr(piece, start = 1, stop = nchar(piece) - 1)
+    # combine it into a path
+    path = paste0(path, "/", piece)
+  }  
+  path = substr(path, start = 2, stop = nchar(path))
+  return(path)
 }
