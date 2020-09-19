@@ -128,4 +128,13 @@ get_native_list_separator = function() {
     result = ","
   }
   return(result)
+<<<<<<< HEAD
+=======
+}
+
+db = function() {
+  
+  get_native_list_separator()
+  print("done")
+>>>>>>> 2824b19645b2bd6d0169909eef7cd2a51157ccc9
 }
