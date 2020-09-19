@@ -10,3 +10,4 @@ topleft = function(x, rcnt = 5, ccnt = rcnt) {
   print(x[1:rcnt, 1:ccnt])
 }
 
+

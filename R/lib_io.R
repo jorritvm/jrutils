@@ -9,23 +9,6 @@ write_table_to_clipboard = function(x, size = 1024) {
   write.table(x, paste0("clipboard-",size), sep="\t", row.names=FALSE, col.names=TRUE)
 }
 
-#' returns the number of R code lines in current working directory
-#'
-#' @return numeric
-#' @export
-projects_lines_count = function() {
-  return(
-    sum(
-      unlist(
-        lapply(list.files(path = getwd(),
-                          pattern = ".*\\.R$",
-                          full.names = TRUE),
-               function(x) length(readLines(x)) 
-        )   
-      )
-    )
-  )
-}
 
 #' fread should be able to auto detect CSV seperator, this function makes sure
 #' it does so always
@@ -127,7 +110,7 @@ wtf = function (x) {
 }
 
 
-#' utility function to combine pieces of a path into a nice character path
+#' utility function to combine pieces of a path into a nice character path --> better: use file.path()
 #'
 #' @param ... 
 #'
@@ -147,4 +130,19 @@ combine_path = function(...) {
   }  
   path = substr(path, start = 2, stop = nchar(path))
   return(path)
+}
+
+
+#' parses a 2 column csv file into a list, usefull for options csv's
+#'
+#' @param csv_fpfn
+#'
+#' @return
+#' @export
+two_column_csv_to_list = function(csv_fpfn) {
+  dt = robust_fread(fpfn = csv_fpfn)
+  li = as.list(dt[[2]])
+  names(li) = gsub(pattern = " ", replacement = "_", x = dt[[1]])
+  
+  return (li)
 }
