@@ -105,3 +105,33 @@ load_packages_robustly <- function(packages, prompt = TRUE) {
   }
   return(all_packages_installed)
 }
+
+
+#' return the list separator character as set up in your system locale
+#'
+#' @return a character ("," or ";" or ...) 
+#' @export
+get_native_list_separator = function() {
+  result = NULL
+  
+  if(.Platform$OS.type == "windows") {
+
+    options(show.error.messages = FALSE)
+    try({ result = utils::readRegistry(key = "Control Panel\\International\\", hive = "HCU")$sList })
+    options(show.error.messages = TRUE)
+    if (is.null(result)) {
+      result = ","
+    }
+    
+  } else {
+    # non winows system - to be implemented later
+    result = ","
+  }
+  return(result)
+}
+
+db = function() {
+  
+  get_native_list_separator()
+  print("done")
+}
