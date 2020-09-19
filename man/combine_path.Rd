@@ -2,7 +2,7 @@
 % Please edit documentation in R/lib_io.R
 \name{combine_path}
 \alias{combine_path}
-\title{utility function to combine pieces of a path into a nice character path}
+\title{utility function to combine pieces of a path into a nice character path --> better: use file.path()}
 \usage{
 combine_path(...)
 }
@@ -13,5 +13,5 @@ combine_path(...)
 
 }
 \description{
-utility function to combine pieces of a path into a nice character path
+utility function to combine pieces of a path into a nice character path --> better: use file.path()
 }
