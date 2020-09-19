@@ -129,9 +129,3 @@ get_native_list_separator = function() {
   }
   return(result)
 }
-
-db = function() {
-  
-  get_native_list_separator()
-  print("done")
-}
