@@ -1,5 +1,8 @@
 # jrutils
-R utility functions
+R utility functions I've assembled or created to improve efficiency.
 
-installation instructions:
+## Installation instructions
 devtools::install_github("jorritvm/jrutils")
+
+## Function overview
+help(package = "jrutils")
