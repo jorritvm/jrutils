@@ -39,15 +39,16 @@ convert_datetime_to_timeid = function(datetime) {
   return(result)
 }
 
-
-#' utility function to cat undefined number of arguments and end with trailing newline and leading timestamp, and starting tic()
+#' utility function to cat undefined number of arguments and end with trailing newline 
+#' and leading timestamp, and starting tic()
+#' 
 #'
 #' @param ... strings to cat
 #'
 #' @export
 #' @import tictoc
 tik = function(...) {
-  cat(paste(strftime(Sys.time() , "(%Y%m%d-%H%M%S)") ,..., "\n"))
+  cat(paste0("\n",paste(now() ,..., "\n")))
   tic(paste(...))
 }
 
@@ -57,7 +58,9 @@ tik = function(...) {
 #' @export
 #' @import tictoc
 tok = function() {
-  toc()
+  if (tolower(opts$verbose) == "true") {
+    toc()
+  }
 }
 
 #' Test whether the provided vector of package is installed on the users's system
@@ -130,3 +133,4 @@ get_native_list_separator = function() {
   }
   return(result)
 }
+

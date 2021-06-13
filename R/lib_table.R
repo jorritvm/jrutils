@@ -7,8 +7,53 @@
 #' @return nothing
 #' @export
 topleft = function(x, rcnt = 5, ccnt = rcnt) {
+  rcnt = min(rcnt, nrow(x))
+  ccnt = min(ccnt, ncol(x))
   print(x[1:rcnt, 1:ccnt])
 }
+tl = topleft # alias
+
+
+#' prints the topright corner of a 2D array (matrix, data.frame, data.table) to the console
+#'
+#' @inheritParams topleft
+#'
+#' @return nothing
+#' @export
+topright = function(x, rcnt = 5, ccnt = rcnt) {
+  rcnt = min(rcnt, nrow(x))
+  ccnt = min(ccnt, ncol(x))
+  print(x[1:rcnt, (ncol(x)-ccnt + 1):ncol(x)])
+}
+tr = topright # alias
+
+
+#' prints the bottomleft corner of a 2D array (matrix, data.frame, data.table) to the console
+#'
+#' @inheritParams topleft
+#'
+#' @return nothing
+#' @export
+bottomleft = function(x, rcnt = 5, ccnt = rcnt) {
+  rcnt = min(rcnt, nrow(x))
+  ccnt = min(ccnt, ncol(x))
+  print(x[(nrow(x) - rcnt + 1):nrow(x), 1:ccnt])
+}
+bl = bottomleft # alias
+
+
+#' prints the bottomright corner of a 2D array (matrix, data.frame, data.table) to the console
+#'
+#' @inheritParams topleft
+#'
+#' @return nothing
+#' @export
+bottomright = function(x, rcnt = 5, ccnt = rcnt) {
+  rcnt = min(rcnt, nrow(x))
+  ccnt = min(ccnt, ncol(x))
+  print(x[(nrow(x) - rcnt + 1):nrow(x), (ncol(x)-ccnt + 1):ncol(x)])
+}
+br = bottomright # alias
 
 
 #' open a data.frame in excel
@@ -66,3 +111,5 @@ wtf = function (x) {
     shell.exec(preferredFilePath)
   }
 }
+
+
