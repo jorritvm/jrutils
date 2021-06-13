@@ -91,3 +91,20 @@ two_column_csv_to_list = function(csv_fpfn) {
   
   return (li)
 }
+
+#' parses a 2 column xlsx file into a list, usefull for options files
+#'
+#' @param xlsx_fpfn xlsx file path
+#' @param xlsx_sheet string name of sheet or integer number of sheet to read 
+#'
+#' @return a list object with settings
+#' @export
+#' @import openxlsx
+two_column_xlsx_to_list = function(xlsx_fpfn, xlsx_sheet) {
+  dt = read.xlsx(xlsxFile = xlsx_fpfn, sheet = xlsx_sheet)
+  
+  li = as.list(dt[[2]])
+  names(li) = gsub(pattern = " ", replacement = "_", x = dt[[1]])
+  
+  return (li)
+}
