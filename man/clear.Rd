@@ -14,13 +14,3 @@ clear(x = c())
 \code{clear} will clear the global environment or, when specified, a list of
 variables. \code{clear} will then call the garbage collector.
 }
-\examples{
-\donttest{
-clear()
-
-x = 1
-y = "foo"
-z = data.frame()
-clear(c("x","y","z"))
-}
-}

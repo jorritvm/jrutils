@@ -7,7 +7,7 @@
 combine_path(...)
 }
 \arguments{
-\item{...}{}
+\item{...}{string pieces to combine into file path}
 }
 \value{
 

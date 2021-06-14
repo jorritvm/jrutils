@@ -7,7 +7,7 @@
 write_table_to_clipboard(x, size = 1024)
 }
 \arguments{
-\item{x}{}
+\item{x}{R table structure (data.frame, matrix, ...)}
 
 \item{size}{extend clipboard size if data.table is too large}
 }

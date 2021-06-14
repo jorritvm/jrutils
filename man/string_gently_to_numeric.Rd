@@ -7,7 +7,7 @@
 string_gently_to_numeric(x)
 }
 \arguments{
-\item{x}{}
+\item{x}{string (which is a number preferably)}
 }
 \value{
 

@@ -9,7 +9,3 @@ clearplots()
 \description{
 closes any open plots in the RStudio viewer pane
 }
-\examples{
-clearplots()
-
-}

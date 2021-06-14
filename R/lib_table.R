@@ -6,11 +6,13 @@
 #'
 #' @return nothing
 #' @export
+#' @name topleft
 topleft = function(x, rcnt = 5, ccnt = rcnt) {
   rcnt = min(rcnt, nrow(x))
   ccnt = min(ccnt, ncol(x))
   print(x[1:rcnt, 1:ccnt])
 }
+#' @rdname topleft
 tl = topleft # alias
 
 
@@ -20,11 +22,13 @@ tl = topleft # alias
 #'
 #' @return nothing
 #' @export
+#' @name topright
 topright = function(x, rcnt = 5, ccnt = rcnt) {
   rcnt = min(rcnt, nrow(x))
   ccnt = min(ccnt, ncol(x))
   print(x[1:rcnt, (ncol(x)-ccnt + 1):ncol(x)])
 }
+#' @rdname topright
 tr = topright # alias
 
 
@@ -34,11 +38,13 @@ tr = topright # alias
 #'
 #' @return nothing
 #' @export
+#' @name bottomleft
 bottomleft = function(x, rcnt = 5, ccnt = rcnt) {
   rcnt = min(rcnt, nrow(x))
   ccnt = min(ccnt, ncol(x))
   print(x[(nrow(x) - rcnt + 1):nrow(x), 1:ccnt])
 }
+#' @rdname bottomleft
 bl = bottomleft # alias
 
 
@@ -48,11 +54,13 @@ bl = bottomleft # alias
 #'
 #' @return nothing
 #' @export
+#' @name bottomright
 bottomright = function(x, rcnt = 5, ccnt = rcnt) {
   rcnt = min(rcnt, nrow(x))
   ccnt = min(ccnt, ncol(x))
   print(x[(nrow(x) - rcnt + 1):nrow(x), (ncol(x)-ccnt + 1):ncol(x)])
 }
+#' @rdname bottomright
 br = bottomright # alias
 
 

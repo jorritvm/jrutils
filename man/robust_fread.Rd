@@ -9,6 +9,10 @@ robust_fread(fpfn, header = "auto", skip = 0)
 }
 \arguments{
 \item{fpfn}{filepath to csv file}
+
+\item{header}{TRUE/FALSE to identify if your file has a header}
+
+\item{skip}{integer amount of rows to skip}
 }
 \value{
 csv file contents as data.table

@@ -7,7 +7,7 @@
 two_column_csv_to_list(csv_fpfn)
 }
 \arguments{
-\item{csv_fpfn}{}
+\item{csv_fpfn}{flie path to csv file}
 }
 \value{
 

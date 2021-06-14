@@ -15,9 +15,3 @@ the size of the variable
 \description{
 returns the size of a single variable in a human readable format
 }
-\examples{
-\donttest{
-x = matrix(data = sample(1:10, 1000*1000, replace=TRUE), nrow = 1000, ncol = 1000)
-print_var_size(x)
-}
-}
