@@ -40,6 +40,10 @@ letters_to_numbers = function(s) {
 #' create a temp xlsx file with autofilter from a data.frame and open it in excel
 #'
 #' @param x a data.frame to open in excel
+#' @param path folder path where the file will be saved (default = temp folder)
+#' @param fn file name (default = sheet name)
+#' @param sheet sheet name (default = variable name)
+#' @param open_file TRUE/FALSE to open EXCEL after writing file
 #'
 #' @return nothing
 #' @export

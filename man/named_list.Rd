@@ -17,5 +17,5 @@ create a list where for each element the name of the variable is the key and the
 }
 \examples{
 a <- b <- c <- 1
-namedList(a,b,c)
+named_list(a,b,c)
 }

@@ -18,12 +18,6 @@ print_globalenv_size = function() {
 #'
 #' @return the size of the variable
 #' @export
-#'
-#' @examples
-#' \donttest{
-#' x = matrix(data = sample(1:10, 1000*1000, replace=TRUE), nrow = 1000, ncol = 1000)
-#' print_var_size(x)
-#' }
 #' @import utils
 print_var_size = function(variableName) {
   print(format(object.size(variableName), units = "auto"))
@@ -44,29 +38,14 @@ clc = function() {
 #' @param x a vector of variable names to be deleted from the workspace
 #'
 #' @export
-#'
-#' @examples
-#' \donttest{
-#' clear()
-#'
-#' x = 1
-#' y = "foo"
-#' z = data.frame()
-#' clear(c("x","y","z"))
-#' }
 clear = function(x = c()) {
   if (length(x) == 0) x = ls()
-  rm(list = x, envir = globalenv())
 }
 
 
 #' closes any open plots in the RStudio viewer pane
 #'
 #' @export
-#'
-#' @examples
-#' clearplots()
-#'
 clearplots = function() {
   if(!is.null(dev.list())) dev.off()
 }

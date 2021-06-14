@@ -2,9 +2,12 @@
 % Please edit documentation in R/lib_table.R
 \name{topleft}
 \alias{topleft}
+\alias{tl}
 \title{prints the topleft corner of a 2D array (matrix, data.frame, data.table) to the console}
 \usage{
 topleft(x, rcnt = 5, ccnt = rcnt)
+
+tl(x, rcnt = 5, ccnt = rcnt)
 }
 \arguments{
 \item{x}{a 2D array}

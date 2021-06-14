@@ -2,7 +2,8 @@
 % Please edit documentation in R/lib_other.R
 \name{tik}
 \alias{tik}
-\title{utility function to cat undefined number of arguments and end with trailing newline and leading timestamp, and starting tic()}
+\title{utility function to cat undefined number of arguments and end with trailing newline 
+and leading timestamp, and starting tic()}
 \usage{
 tik(...)
 }
@@ -10,5 +11,6 @@ tik(...)
 \item{...}{strings to cat}
 }
 \description{
-utility function to cat undefined number of arguments and end with trailing newline and leading timestamp, and starting tic()
+utility function to cat undefined number of arguments and end with trailing newline 
+and leading timestamp, and starting tic()
 }

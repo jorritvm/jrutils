@@ -7,7 +7,7 @@
 #'
 #' @examples
 #' a <- b <- c <- 1
-#' namedList(a,b,c)
+#' named_list(a,b,c)
 named_list <- function(...) {
   L <- list(...)
   snm <- sapply(substitute(list(...)),deparse)[-1]
@@ -19,7 +19,7 @@ named_list <- function(...) {
 
 #' converts a string to a boolean if it holds true or false, but retains the string if not
 #'
-#' @param x
+#' @param x string "TRUE", "true", "FALSE", "false" or something else 
 #'
 #' @return
 #' @export
@@ -38,7 +38,7 @@ string_gently_to_boolean = function(x) {
 
 #' converts a string to a numeric if it holds a number, but retains the string if not
 #'
-#' @param x
+#' @param x string (which is a number preferably)
 #'
 #' @return
 #' @export

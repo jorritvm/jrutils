@@ -1,6 +1,6 @@
 #' shortcut to put your matrix, data.frame or data.table on your clipboard.
 #'
-#' @param x 
+#' @param x R table structure (data.frame, matrix, ...)
 #' @param size extend clipboard size if data.table is too large
 #'
 #' @return
@@ -14,6 +14,8 @@ write_table_to_clipboard = function(x, size = 1024) {
 #' it does so always
 #'
 #' @param fpfn filepath to csv file
+#' @param header TRUE/FALSE to identify if your file has a header
+#' @param skip integer amount of rows to skip
 #'
 #' @return csv file contents as data.table
 #' @export
@@ -57,7 +59,7 @@ wopen <- function(path){
 
 #' utility function to combine pieces of a path into a nice character path --> better: use file.path()
 #'
-#' @param ... 
+#' @param ... string pieces to combine into file path
 #'
 #' @return
 #' @export
@@ -80,7 +82,7 @@ combine_path = function(...) {
 
 #' parses a 2 column csv file into a list, usefull for options csv's
 #'
-#' @param csv_fpfn
+#' @param csv_fpfn flie path to csv file
 #'
 #' @return
 #' @export

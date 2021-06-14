@@ -7,7 +7,7 @@
 string_gently_to_boolean(x)
 }
 \arguments{
-\item{x}{}
+\item{x}{string "TRUE", "true", "FALSE", "false" or something else}
 }
 \value{
 
