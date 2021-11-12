@@ -13,6 +13,7 @@ topleft = function(x, rcnt = 5, ccnt = rcnt) {
   print(x[1:rcnt, 1:ccnt])
 }
 #' @rdname topleft
+#' @export
 tl = topleft # alias
 
 
@@ -29,6 +30,7 @@ topright = function(x, rcnt = 5, ccnt = rcnt) {
   print(x[1:rcnt, (ncol(x)-ccnt + 1):ncol(x)])
 }
 #' @rdname topright
+#' @export
 tr = topright # alias
 
 
@@ -45,6 +47,7 @@ bottomleft = function(x, rcnt = 5, ccnt = rcnt) {
   print(x[(nrow(x) - rcnt + 1):nrow(x), 1:ccnt])
 }
 #' @rdname bottomleft
+#' @export
 bl = bottomleft # alias
 
 
@@ -61,6 +64,7 @@ bottomright = function(x, rcnt = 5, ccnt = rcnt) {
   print(x[(nrow(x) - rcnt + 1):nrow(x), (ncol(x)-ccnt + 1):ncol(x)])
 }
 #' @rdname bottomright
+#' @export
 br = bottomright # alias
 
 
@@ -121,3 +125,68 @@ wtf = function (x) {
 }
 
 
+#' merge a data.table x and y (left join) and overwrite the 
+#' values in x with those in y for the matching columns
+#'
+#' @param x data.table
+#' @param y data.table
+#' @param by A vector of shared column names in x and y to merge on. This defaults to the shared key columns between the two tables. If y has no key columns, this defaults to the key of x
+#' @param by.x Vectors of column names in x and y to merge on.
+#' @param by.y Vectors of column names in x and y to merge on.
+#'
+#' @return
+#' @export
+merge_overwrite = function(x, y, 
+                           by = NULL, by.x = NULL, by.y = NULL) {
+  
+  # determine the value columns (as opposed to the id columns which are given in the by argument)
+  com.cols    = setdiff(
+    intersect(
+      setdiff(names(x), by.x), 
+      setdiff(names(y), by.y)
+    ), 
+    by)
+  com.cols.x  = paste0(com.cols, ".x")
+  com.cols.y  = paste0(com.cols, ".y")
+  
+  # create combined table
+  if (!is.null(by)) {
+    m = merge(x, y, by = by, all.x = TRUE)  
+  } else {
+    m = merge(x, y, by.x = by.x, by.y = by.y, all.x = TRUE)  
+  }
+  
+  # overwrite x when new values are present in y
+  for (j in seq_along(com.cols)) 
+    m[!is.na(get(com.cols.y[j])), (com.cols.x[j]) := get(com.cols.y[j])]
+  
+  # remove unneeded columns
+  m[, (com.cols.y) := NULL]
+  
+  # rename kept columns
+  setnames(m, com.cols.x, com.cols)
+  
+  return(m)
+  
+}
+
+
+#' distributes per row each element of m_distribute over the elements of 
+#' m_data pro rata the weight of each element per line in m_data
+#'
+#' @param m_distribute m x 1 numeric vector 
+#' @param m_data x n numeric matrix
+#'
+#' @return new matrix 
+#' @export
+#' @examples 
+#' m_distribute = c(1,10)
+#' m_data = matrix(c(1,2,20,10), nrow = 2, byrow = TRUE)
+#' distribute_vector_over_matrix(m_data, m_distribute)
+distribute_vector_over_matrix = function(m_data, m_distribute) {
+  m_data_sum = rowSums(m_data)                                    
+  ratios = m_data / m_data_sum
+  m_distributed = apply(ratios, 2, `*`, m_distribute)
+  m_final = m_data + m_distributed
+  return(m_final)
+}
