@@ -4,10 +4,12 @@
 \alias{two_column_csv_to_list}
 \title{parses a 2 column csv file into a list, usefull for options csv's}
 \usage{
-two_column_csv_to_list(csv_fpfn)
+two_column_csv_to_list(csv_fpfn, header = "auto")
 }
 \arguments{
 \item{csv_fpfn}{flie path to csv file}
+
+\item{header}{TRUE/FALSE/"auto" to indicate whether CSV file contains header row}
 }
 \value{
 

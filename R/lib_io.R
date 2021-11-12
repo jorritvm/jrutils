@@ -83,11 +83,12 @@ combine_path = function(...) {
 #' parses a 2 column csv file into a list, usefull for options csv's
 #'
 #' @param csv_fpfn flie path to csv file
+#' @param header TRUE/FALSE/"auto" to indicate whether CSV file contains header row
 #'
 #' @return
 #' @export
-two_column_csv_to_list = function(csv_fpfn) {
-  dt = robust_fread(fpfn = csv_fpfn)
+two_column_csv_to_list = function(csv_fpfn, header = "auto") {
+  dt = robust_fread(fpfn = csv_fpfn, header)
   li = as.list(dt[[2]])
   names(li) = gsub(pattern = " ", replacement = "_", x = dt[[1]])
   
