@@ -13,6 +13,7 @@ topleft = function(x, rcnt = 5, ccnt = rcnt) {
   print(x[1:rcnt, 1:ccnt])
 }
 #' @rdname topleft
+#' @export
 tl = topleft # alias
 
 
@@ -29,6 +30,7 @@ topright = function(x, rcnt = 5, ccnt = rcnt) {
   print(x[1:rcnt, (ncol(x)-ccnt + 1):ncol(x)])
 }
 #' @rdname topright
+#' @export
 tr = topright # alias
 
 
@@ -45,6 +47,7 @@ bottomleft = function(x, rcnt = 5, ccnt = rcnt) {
   print(x[(nrow(x) - rcnt + 1):nrow(x), 1:ccnt])
 }
 #' @rdname bottomleft
+#' @export
 bl = bottomleft # alias
 
 
@@ -61,6 +64,7 @@ bottomright = function(x, rcnt = 5, ccnt = rcnt) {
   print(x[(nrow(x) - rcnt + 1):nrow(x), (ncol(x)-ccnt + 1):ncol(x)])
 }
 #' @rdname bottomright
+#' @export
 br = bottomright # alias
 
 
