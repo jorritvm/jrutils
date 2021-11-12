@@ -169,3 +169,24 @@ merge_overwrite = function(x, y,
   return(m)
   
 }
+
+
+#' distributes per row each element of m_distribute over the elements of 
+#' m_data pro rata the weight of each element per line in m_data
+#'
+#' @param m_distribute m x 1 numeric vector 
+#' @param m_data x n numeric matrix
+#'
+#' @return new matrix 
+#' @export
+#' @examples 
+#' m_distribute = c(1,10)
+#' m_data = matrix(c(1,2,20,10), nrow = 2, byrow = TRUE)
+#' distribute_vector_over_matrix(m_data, m_distribute)
+distribute_vector_over_matrix = function(m_data, m_distribute) {
+  m_data_sum = rowSums(m_data)                                    
+  ratios = m_data / m_data_sum
+  m_distributed = apply(ratios, 2, `*`, m_distribute)
+  m_final = m_data + m_distributed
+  return(m_final)
+}
