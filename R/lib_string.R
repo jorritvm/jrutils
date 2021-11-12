@@ -1,7 +1,21 @@
+#' show leftmost x characters from string s
+#'
+#' @param s string
+#' @param x integer
+#'
+#' @return string
+#' @export
 str_left = function(s, x) {
   return(substr(s, start = 1, stop = x))
 }
 
+#' show rightmost x characters from string sTitle
+#'
+#' @param s string
+#' @param x integer
+#'
+#' @return string
+#' @export
 str_right = function(s, x) {
   return(substr(s, start = nchar(s) - x + 1, nchar(s)))
 }
