@@ -12,6 +12,7 @@ update_jrutils_package = function() {
   }
 }
 
+
 #' utility function to cat undefined number of arguments and end with trailing newline 
 #'
 #' @param ... strings to cat 
@@ -39,6 +40,7 @@ convert_datetime_to_timeid = function(datetime) {
   return(result)
 }
 
+
 #' utility function to cat undefined number of arguments and end with trailing newline 
 #' and leading timestamp, and starting tic()
 #' 
@@ -52,6 +54,7 @@ tik = function(...) {
   tic(paste(...))
 }
 
+
 #' alias for toc() to be more in line with overloaded function tik()
 #'
 #' @return
@@ -62,6 +65,7 @@ tok = function() {
     toc()
   }
 }
+
 
 #' Test whether the provided vector of package is installed on the users's system
 #' Installed packages are loaded. The user is prompted to install non-installed packages.
@@ -134,3 +138,44 @@ get_native_list_separator = function() {
   return(result)
 }
 
+
+#' create a progress string like "(5/10)"
+#'
+#' @param i numeric
+#' @param tot numeric
+#' @param tspace boolean for trailing space
+#'
+#' @return
+#' @export
+pt = function(i, tot, tspace = TRUE) {
+  pt = paste0("(",i,"/",tot,")")
+  if (tspace) pt = paste0(pt, " ")
+  return(pt)
+}
+
+
+#' cats a string representation of a variable's structure, 
+#' and puts it on the clipboard if desired, to be pasted in roxygen doc
+#'
+#' @param var the variable you wish to document
+#' @param type is it roxygen 'param' or 'return'?
+#' @param cb TRUE FALSE : put doc on clipboard
+#'
+#' @return a string documenting the variable
+#' @export
+docvar = function(var, type = "return", cb = TRUE) {
+  cl = class(var)[1]
+  if (cl == "data.table" | cl == "data.frame") {
+    s = paste0("#' @", type, " ")
+    indent = paste0("#'",
+                    paste(rep(" ",nchar(s)-2), collapse = ""))
+    s = paste0(s, "a ", cl, " with structure:\n")
+    for (col in names(var)) {
+      s = paste0(s, indent, "- ",col, ": ", class(var[[col]])[1], "\n")
+    }
+  }
+  
+  if (cb) writeClipboard(s)
+  
+  cat(s)
+}
