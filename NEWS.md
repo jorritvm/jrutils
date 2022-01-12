@@ -4,6 +4,7 @@
 
 ## NEW FEATURES
 lib_table
+- added list_of_vectors_to_dt() to convert a list of vectors and dataframes to datatable
 - added merge_overwrite() to  merge a data.table x and y (left join) and overwrite the values in x with those in y for the matching columns
 - added insert_at_element() to inject a vector at a specific location in another vector
 - added 'header' argument to two_column_csv_to_list()
