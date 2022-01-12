@@ -95,6 +95,7 @@ two_column_csv_to_list = function(csv_fpfn, header = "auto") {
   return (li)
 }
 
+
 #' parses a 2 column xlsx file into a list, usefull for options files
 #'
 #' @param xlsx_fpfn xlsx file path

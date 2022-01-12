@@ -190,3 +190,15 @@ distribute_vector_over_matrix = function(m_data, m_distribute) {
   m_final = m_data + m_distributed
   return(m_final)
 }
+
+
+#' creates a new data.table where every list element which is a vector becomes a column
+#'
+#' @param l list of vectors of length N, or dataframes with nrow = N
+#'
+#' @return
+#' @export
+list_of_vectors_to_dt = function(l) {
+  res = as.data.table(do.call(cbind, l))
+  return(res)
+}

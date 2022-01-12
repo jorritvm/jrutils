@@ -37,3 +37,29 @@ insert_at_element = function(v, existing_element, new_elements, where = "before"
   
   return(new)
 }
+
+
+#' splits a comma separated character string into a character vector
+#'
+#' @param split separation character
+#' @param char_string character string
+#'
+#' @return
+#' @export
+csv_to_vector = function(char_string, split=",") {
+  x = unlist(strsplit(char_string, split))
+  if (str_right(char_string,1) == split) x = c(x,"")
+  return(x)
+}
+
+
+#' returns a character vector as a comma seperated string
+#'
+#' @param char_vector character vector
+#' @param split separation character
+#'
+#' @return
+#' @export
+vector_to_csv = function(char_vector, split=",") {
+  return(paste(char_vector, collapse = split))
+}
