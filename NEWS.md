@@ -1,4 +1,6 @@
 # jrutils (develop)
+
+# jrutils v0.6.0
 ## NOTES
 - improved tik-tok functions output
 - now() was renamed to tstamp() to avoid overloading lubridate::now() 
@@ -6,12 +8,6 @@
 ## NEW FEATURES
 lib_table
 - added list_of_vectors_to_dt() to convert a list of vectors and dataframes to datatable
-- added merge_overwrite() to  merge a data.table x and y (left join) and overwrite the values in x with those in y for the matching columns
-- added insert_at_element() to inject a vector at a specific location in another vector
-- added 'header' argument to two_column_csv_to_list()
-- added docs for str_right() and str_left()
-- added namespace exports for aliasses tl, tr, br, bl
-- added distribute_vector_over_matrix
 
 lib_vector
 - added vector_to_csv() and csv_to_vector to convert between csv strings and string vectors
@@ -19,6 +15,18 @@ lib_vector
 lib_other
 - added pt() for progress tracking
 - added docvar() for quickly outputing a df structure for use in roxygen documentation
+
+<br />
+
+# jrutils v0.5.0
+## NEW FEATURES
+lib_table
+- added merge_overwrite() to  merge a data.table x and y (left join) and overwrite the values in x with those in y for the matching columns
+- added insert_at_element() to inject a vector at a specific location in another vector
+- added 'header' argument to two_column_csv_to_list()
+- added docs for str_right() and str_left()
+- added namespace exports for aliasses tl, tr, br, bl
+- added distribute_vector_over_matrix
 
 <br />
 
