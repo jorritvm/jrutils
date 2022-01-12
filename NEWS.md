@@ -12,6 +12,13 @@ lib_table
 - added namespace exports for aliasses tl, tr, br, bl
 - added distribute_vector_over_matrix
 
+lib_vector
+- added vector_to_csv() and csv_to_vector to convert between csv strings and string vectors
+
+lib_other
+- added pt() for progress tracking
+- added docvar() for quickly outputing a df structure for use in roxygen documentation
+
 <br />
 
 # jrutils v0.4.0
