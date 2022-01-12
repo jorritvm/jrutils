@@ -50,8 +50,11 @@ convert_datetime_to_timeid = function(datetime) {
 #' @export
 #' @import tictoc
 tik = function(...) {
-  cat(paste0("\n",paste(now() ,..., "\n")))
-  tic(paste(...))
+  tic(paste(...), quiet = FALSE, func.tic = my.msg.tic)
+}
+## Using tic custom callbacks 
+my.msg.tic <- function(tic, msg) {
+  outmsg <- paste("(", now(" ", "-", ":"), ") ", msg, sep = "")
 }
 
 
@@ -61,9 +64,11 @@ tik = function(...) {
 #' @export
 #' @import tictoc
 tok = function() {
-  if (tolower(opts$verbose) == "true") {
-    toc()
-  }
+  toc(quiet = FALSE, func.toc = my.msg.toc)
+}
+## Using toc custom callbacks 
+my.msg.toc <- function(tic, toc, msg, info) {
+  outmsg <- paste("(", now(" ", "-", ":"), ") ", msg, ": ", round(toc - tic, 2), " seconds elapsed", sep = "")
 }
 
 

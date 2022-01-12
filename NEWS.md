@@ -1,4 +1,7 @@
 # jrutils (develop)
+## NOTES
+- improved tik-tok functions output
+
 ## NEW FEATURES
 lib_table
 - added merge_overwrite() to  merge a data.table x and y (left join) and overwrite the values in x with those in y for the matching columns
