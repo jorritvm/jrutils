@@ -1,6 +1,7 @@
 # jrutils (develop)
 ## NOTES
 - improved tik-tok functions output
+- now() was renamed to tstamp() to avoid overloading lubridate::now() 
 
 ## NEW FEATURES
 lib_table

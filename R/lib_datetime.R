@@ -24,7 +24,7 @@ convert_datetime_to_timeid = function(datetime) {
 #'
 #' @return string timestamp
 #' @export
-now = function(date_hour_sep = "-", date_sep = "", hour_sep = "") {
+tstamp = function(date_hour_sep = "-", date_sep = "", hour_sep = "") {
   date_pattern = paste(c("%Y","%m","%d"), collapse = date_sep)
   hour_pattern = paste(c("%H","%M","%S"), collapse = hour_sep)
   full_pattern = paste(c(date_pattern, hour_pattern), collapse = date_hour_sep)

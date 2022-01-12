@@ -54,7 +54,7 @@ tik = function(...) {
 }
 ## Using tic custom callbacks 
 my.msg.tic <- function(tic, msg) {
-  outmsg <- paste("(", now(" ", "-", ":"), ") ", msg, sep = "")
+  outmsg <- paste("(", tstamp(" ", "-", ":"), ") ", msg, sep = "")
 }
 
 
@@ -68,7 +68,7 @@ tok = function() {
 }
 ## Using toc custom callbacks 
 my.msg.toc <- function(tic, toc, msg, info) {
-  outmsg <- paste("(", now(" ", "-", ":"), ") ", msg, ": ", round(toc - tic, 2), " seconds elapsed", sep = "")
+  outmsg <- paste("(", tstamp(" ", "-", ":"), ") ", msg, ": ", round(toc - tic, 2), " seconds elapsed", sep = "")
 }
 
 
@@ -137,7 +137,7 @@ get_native_list_separator = function() {
     }
     
   } else {
-    # non winows system - to be implemented later
+    # non windows system - to be implemented later
     result = ","
   }
   return(result)
