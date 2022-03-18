@@ -8,7 +8,7 @@
 - added remove_tail_na() to remove rows that contain NA from the tail of a data frame
 - added tsampnum(), a numerical-character-only timestamp
 - added numeric_date_to_iso8601 to cnoverts excel numerical dates to R Date objects
-
+- added file_backup() to easily backup a file
 
 
 # jrutils v0.6.0
