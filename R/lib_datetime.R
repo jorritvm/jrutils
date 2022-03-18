@@ -44,3 +44,19 @@ tstamp = function(date_hour_sep = " ", date_sep = "-", hour_sep = ":", braces = 
 tstampnum = function() {
   return(tstamp("","","",FALSE))
 }
+
+
+#' returns the season string for a given date
+#'
+#' @param input_date 
+#'
+#' @return a string from the list: c("winter","inter","summer","inter","winter")
+#' @export
+get_season_from_date <- function(input_date){
+  numeric.date <- 100*month(input_date)+day(input_date)
+  ## input Seasons upper limits in the form MMDD in the "break =" option:
+  cuts <- base::cut(numeric.date, breaks = c(0,319,0620,0921,1220,1231)) 
+  # rename the resulting groups (could've been done within cut(...levels=) if "Winter" wasn't double
+  levels(cuts) <- c("winter","inter","summer","inter","winter")
+  return(cuts)
+}
