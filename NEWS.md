@@ -1,5 +1,10 @@
 # jrutils (develop)
 
+# jrutils v0.7.0
+## NEW FEATURES
+- added remove_tail_na() to remove rows that contain NA from the tail of a data frame
+
+
 # jrutils v0.6.0
 ## NOTES
 - improved tik-tok functions output
