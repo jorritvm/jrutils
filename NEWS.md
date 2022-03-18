@@ -1,8 +1,13 @@
 # jrutils (develop)
 
 # jrutils v0.7.0
+## NOTES
+- improved time_stamp() function arguments
+
 ## NEW FEATURES
 - added remove_tail_na() to remove rows that contain NA from the tail of a data frame
+- added tsampnum(), a numerical-character-only timestamp
+
 
 
 # jrutils v0.6.0
