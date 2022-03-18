@@ -63,3 +63,34 @@ csv_to_vector = function(char_string, split=",") {
 vector_to_csv = function(char_vector, split=",") {
   return(paste(char_vector, collapse = split))
 }
+
+
+#' looks for the value closest to the provided values, in a vector of provided values, return the position
+#'
+#' @param look_near_these_values look for values close to these
+#' @param in_these_values look in this vector
+#'
+#' @return the position of the closest values
+#' @export
+nearest_pos = function(look_near_these_values, in_these_values) {
+  out = c()
+  for (p in look_near_these_values) {
+    x = which.min(abs(p - in_these_values))[1]
+    out = c(out, x)
+  }
+  return(out)
+}
+
+
+#' looks for the value closest to the provided values, in a vector of provided values, return the value
+#'
+#' @param look_near_these_values look for values close to these
+#' @param in_these_values look in this vector
+#'
+#' @return
+#' @export
+nearest_val = function(look_near_these_values, in_these_values) {
+  pos = nearest_pos(look_near_these_values, in_these_values)
+  out = in_these_values[pos]
+  return(out)
+}

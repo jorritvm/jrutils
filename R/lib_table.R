@@ -202,3 +202,14 @@ list_of_vectors_to_dt = function(l) {
   res = as.data.table(do.call(cbind, l))
   return(res)
 }
+
+#' removes tail rows that contain NA values, up until the last row that is fully complete
+#'
+#' @param dt data.frame
+#'
+#' @return
+#' @export
+remove_tail_na = function(dt) {
+  out = dt[ seq( max(which(complete.cases(dt))) ) ]
+  return(out)
+}

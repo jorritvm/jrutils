@@ -112,3 +112,19 @@ two_column_xlsx_to_list = function(xlsx_fpfn, xlsx_sheet) {
   
   return (li)
 }
+
+
+#' will create a backup of a file where the file is suffixed with a timestamp and '.backup'
+#'
+#' @param fpfn_from file path to file to be backed up
+#'
+#' @return
+#' @export
+file_backup = function(fpfn_from) {
+  if (!file.exists(fpfn)) {
+    warning(paste("File does not exist, no backup created for", fpfn))
+  } else {
+    fpfn_to = paste0(fpfn, ".", time_stamp("_","-","-"), ".backup")
+    file.copy(from = fpfn_from, to = fpfn_to, copy.mode = TRUE, copy.date = TRUE) 
+  }
+}

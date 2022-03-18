@@ -1,4 +1,18 @@
 # jrutils (develop)
+
+# jrutils v0.7.0
+## NOTES
+- improved time_stamp() function arguments
+
+## NEW FEATURES
+- added remove_tail_na() to remove rows that contain NA from the tail of a data frame
+- added tsampnum(), a numerical-character-only timestamp
+- added numeric_date_to_iso8601 to cnoverts excel numerical dates to R Date objects
+- added file_backup() to easily backup a file
+- added nearest_pos() and nearest_val() to find closest values in a vector
+- added get_season_from_date()
+
+# jrutils v0.6.0
 ## NOTES
 - improved tik-tok functions output
 - now() was renamed to tstamp() to avoid overloading lubridate::now() 
@@ -6,12 +20,6 @@
 ## NEW FEATURES
 lib_table
 - added list_of_vectors_to_dt() to convert a list of vectors and dataframes to datatable
-- added merge_overwrite() to  merge a data.table x and y (left join) and overwrite the values in x with those in y for the matching columns
-- added insert_at_element() to inject a vector at a specific location in another vector
-- added 'header' argument to two_column_csv_to_list()
-- added docs for str_right() and str_left()
-- added namespace exports for aliasses tl, tr, br, bl
-- added distribute_vector_over_matrix
 
 lib_vector
 - added vector_to_csv() and csv_to_vector to convert between csv strings and string vectors
@@ -19,6 +27,18 @@ lib_vector
 lib_other
 - added pt() for progress tracking
 - added docvar() for quickly outputing a df structure for use in roxygen documentation
+
+<br />
+
+# jrutils v0.5.0
+## NEW FEATURES
+lib_table
+- added merge_overwrite() to  merge a data.table x and y (left join) and overwrite the values in x with those in y for the matching columns
+- added insert_at_element() to inject a vector at a specific location in another vector
+- added 'header' argument to two_column_csv_to_list()
+- added docs for str_right() and str_left()
+- added namespace exports for aliasses tl, tr, br, bl
+- added distribute_vector_over_matrix
 
 <br />
 
