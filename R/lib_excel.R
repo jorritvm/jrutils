@@ -90,3 +90,16 @@ wtx = function (x, path = dirname(tempfile()), fn = NULL, sheet = NULL, open_fil
   # open file if desired
   if (open_file) shell.exec(fpfn)
 }
+
+#' converts a numeric date (e.g. when reading an excel file) to a iso8601 date string
+#' works on windows only
+#'
+#' @param num numeric representation of date - for Excel on Windows, the origin date is December 30, 1899 for dates after 1900.
+#'
+#' @return
+#' @export
+numeric_date_to_iso8601 = function(num) {
+  return(
+    format(as.Date(num, origin = "1899-12-30"), '%Y-%m-%d')
+  )  
+}
