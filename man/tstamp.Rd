@@ -4,7 +4,7 @@
 \alias{tstamp}
 \title{return a string timestamp in ISO8601 using the provided separators}
 \usage{
-tstamp(date_hour_sep = "-", date_sep = "", hour_sep = "")
+tstamp(date_hour_sep = " ", date_sep = "-", hour_sep = ":", braces = TRUE)
 }
 \arguments{
 \item{date_hour_sep}{separator to be used between date and hour segment of the output}
@@ -12,6 +12,8 @@ tstamp(date_hour_sep = "-", date_sep = "", hour_sep = "")
 \item{date_sep}{separator to be used between date components of the output}
 
 \item{hour_sep}{separator to be used between hour components of the output}
+
+\item{braces}{boolean to indicate if time stamp should be put between braces}
 }
 \value{
 string timestamp
