@@ -27,6 +27,7 @@ str_right = function(s, x) {
 #'
 #' @return string with special characters removed
 #' @export
+#' @import stringr
 remove_all_spec_char = function(s, repl = "_") {
   x = str_replace_all(s, "[^[:alnum:]|\\_|\\-]", repl)
   return(x)
@@ -40,6 +41,7 @@ remove_all_spec_char = function(s, repl = "_") {
 #'
 #' @return string with special characters removed
 #' @export
+#' @import stringr
 remove_win_reserved_char = function(s, repl = "_") {
   not_allowed = '[\\/\\\\\\*\\?\\|\\"\\<\\>\\:]'
   x = str_replace_all(s, not_allowed, repl)

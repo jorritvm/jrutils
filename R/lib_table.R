@@ -136,6 +136,7 @@ wtf = function (x) {
 #'
 #' @return
 #' @export
+#' @import data.table
 merge_overwrite = function(x, y, 
                            by = NULL, by.x = NULL, by.y = NULL) {
   
@@ -198,6 +199,7 @@ distribute_vector_over_matrix = function(m_data, m_distribute) {
 #'
 #' @return
 #' @export
+#' @import data.table
 list_of_vectors_to_dt = function(l) {
   res = as.data.table(do.call(cbind, l))
   return(res)

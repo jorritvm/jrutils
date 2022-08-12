@@ -19,6 +19,7 @@ write_table_to_clipboard = function(x, size = 1024) {
 #'
 #' @return csv file contents as data.table
 #' @export
+#' @import data.table
 robust_fread = function(fpfn, header = "auto", skip = 0) {
   if (file.exists(fpfn)) {
     x = fread(fpfn, header = header, skip = skip)
@@ -86,7 +87,7 @@ combine_path = function(...) {
 #'
 #' @return
 clean_path = function(path) { 
-  normalizePath(path, "/") 
+  suppressWarnings(normalizePath(path, "/"))
 }
 
 

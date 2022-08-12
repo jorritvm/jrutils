@@ -5,6 +5,7 @@
 #'
 #' @return
 #' @export
+#' @import lubridate
 convert_datetime_to_timeid = function(datetime) {
   result = c()
   for (dt in datetime) {
