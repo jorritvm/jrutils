@@ -1,4 +1,28 @@
 # jrutils (develop)
+- tbc
+
+# jrutils v0.8.0
+## NOTES
+general
+- fixed roxygen missing @import in several functions
+
+lib_project
+- removed this lib and both deprecated lines of code functions
+
+## NEW FEATURES
+lib_io
+- added clean_path()
+- added init_project_folder()
+- added wtc() alias to write_table_to_clipboard()
+- added loc() as a new and fully featured lines of code counter
+
+lib_rstudio
+- added get_session_type()
+
+lib_other
+- removed duplicate convert_datetime_to_timeid()
+
+<br />
 
 # jrutils v0.7.0
 ## NOTES
@@ -11,6 +35,8 @@
 - added file_backup() to easily backup a file
 - added nearest_pos() and nearest_val() to find closest values in a vector
 - added get_season_from_date()
+
+<br />
 
 # jrutils v0.6.0
 ## NOTES

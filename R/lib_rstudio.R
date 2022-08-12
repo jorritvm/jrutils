@@ -49,3 +49,18 @@ clear = function(x = c()) {
 clearplots = function() {
   if(!is.null(dev.list())) dev.off()
 }
+
+
+#' Provides information about the type of sessions we are running
+#'
+#' @return a boolean 'interactive' = TRUE when code is run from RStudio, FALSE if it is run from RScript.exe
+#' @export
+get_session_type = function() {
+  if (commandArgs()[1] == "Rstudio") {
+    # we are now in interactive mode running the script from rstudio  
+    interactive = TRUE
+  } else {
+    # we are running the script using the R binary from some location (RScript.exe)  
+    interactive = FALSE
+  }
+}

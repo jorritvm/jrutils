@@ -4,6 +4,7 @@
 #'
 #' @return list(R = ..., C = ...)
 #' @export
+#' @import stringr
 excel_cell_to_RC = function(s) {
   s_upper = toupper(s)
   
@@ -47,6 +48,7 @@ letters_to_numbers = function(s) {
 #'
 #' @return nothing
 #' @export
+#' @import openxlsx
 wtx = function (x, path = dirname(tempfile()), fn = NULL, sheet = NULL, open_file = TRUE) {
   sh = deparse(substitute(x))
   

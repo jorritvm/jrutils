@@ -5,9 +5,13 @@
 #'
 #' @return
 #' @export
+#' @name write_table_to_clipboard
 write_table_to_clipboard = function(x, size = 1024) {
   write.table(x, paste0("clipboard-",size), sep="\t", row.names=FALSE, col.names=TRUE)
 }
+#' @rdname write_table_to_clipboard
+#' @export
+wtc = write_table_to_clipboard # alias
 
 
 #' fread should be able to auto detect CSV seperator, this function makes sure
@@ -19,6 +23,7 @@ write_table_to_clipboard = function(x, size = 1024) {
 #'
 #' @return csv file contents as data.table
 #' @export
+#' @import data.table
 robust_fread = function(fpfn, header = "auto", skip = 0) {
   if (file.exists(fpfn)) {
     x = fread(fpfn, header = header, skip = skip)
@@ -80,6 +85,16 @@ combine_path = function(...) {
 }
 
 
+#' noramlize path (get rid of ..) but default to forward slash
+#'
+#' @param path string path (e.g. result of file.path()
+#'
+#' @return
+clean_path = function(path) { 
+  suppressWarnings(normalizePath(path, "/"))
+}
+
+
 #' parses a 2 column csv file into a list, usefull for options csv's
 #'
 #' @param csv_fpfn flie path to csv file
@@ -127,4 +142,17 @@ file_backup = function(fpfn_from) {
     fpfn_to = paste0(fpfn, ".", time_stamp("_","-","-"), ".backup")
     file.copy(from = fpfn_from, to = fpfn_to, copy.mode = TRUE, copy.date = TRUE) 
   }
+}
+
+
+#' given that the workdir is project/src this will create project/foldername if it does not exist yet
+#'
+#' @param foldername 
+#'
+#' @return the full file path of the folder you wanted to initialise
+#' @export
+init_project_folder = function(foldername) {
+  fp = clean_path(file.path(dirname(getwd()), foldername))
+  if (!dir.exists(fp)) dir.create(fp, showWarnings = FALSE, recursive = TRUE)
+  return(fp)
 }
