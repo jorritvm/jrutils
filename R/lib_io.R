@@ -5,9 +5,13 @@
 #'
 #' @return
 #' @export
+#' @name write_table_to_clipboard
 write_table_to_clipboard = function(x, size = 1024) {
   write.table(x, paste0("clipboard-",size), sep="\t", row.names=FALSE, col.names=TRUE)
 }
+#' @rdname write_table_to_clipboard
+#' @export
+wtc = write_table_to_clipboard # alias
 
 
 #' fread should be able to auto detect CSV seperator, this function makes sure
