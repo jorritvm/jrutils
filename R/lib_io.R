@@ -139,3 +139,16 @@ file_backup = function(fpfn_from) {
     file.copy(from = fpfn_from, to = fpfn_to, copy.mode = TRUE, copy.date = TRUE) 
   }
 }
+
+
+#' given that the workdir is project/src this will create project/foldername if it does not exist yet
+#'
+#' @param foldername 
+#'
+#' @return the full file path of the folder you wanted to initialise
+#' @export
+init_project_folder = function(foldername) {
+  fp = clean_path(file.path(dirname(getwd()), foldername))
+  if (!dir.exists(fp)) dir.create(fp, showWarnings = FALSE, recursive = TRUE)
+  return(fp)
+}
