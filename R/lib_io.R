@@ -80,6 +80,16 @@ combine_path = function(...) {
 }
 
 
+#' noramlize path (get rid of ..) but default to forward slash
+#'
+#' @param path string path (e.g. result of file.path()
+#'
+#' @return
+clean_path = function(path) { 
+  normalizePath(path, "/") 
+}
+
+
 #' parses a 2 column csv file into a list, usefull for options csv's
 #'
 #' @param csv_fpfn flie path to csv file
