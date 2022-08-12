@@ -2,9 +2,12 @@
 % Please edit documentation in R/lib_io.R
 \name{write_table_to_clipboard}
 \alias{write_table_to_clipboard}
+\alias{wtc}
 \title{shortcut to put your matrix, data.frame or data.table on your clipboard.}
 \usage{
 write_table_to_clipboard(x, size = 1024)
+
+wtc(x, size = 1024)
 }
 \arguments{
 \item{x}{R table structure (data.frame, matrix, ...)}
