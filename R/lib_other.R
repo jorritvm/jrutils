@@ -166,3 +166,48 @@ docvar = function(var, type = "return", cb = TRUE) {
   
   cat(s)
 }
+
+
+#' count lines of code in R & python files in your project
+#'
+#' @param path root path of a project
+#' @param skip_comments does not count lines starting in '#'
+#' @param skip_blanks does not count blank lines (whitespace)
+#'
+#' @return integer lines of code
+#' @export
+loc = function(path,
+               skip_comments = FALSE,
+               skip_blanks = TRUE) {
+  # get the regex
+  extensions = c(".py", ".r")
+  regex = ""
+  for (ext in extensions) {
+    regex = paste0(ext, "$|", regex)
+  }
+  regex = substr(regex, 1, nchar(regex) - 1)
+  
+  # read the files
+  loc = 0
+  files = list.files(
+    path,
+    pattern = regex,
+    full.names = TRUE,
+    recursive = TRUE,
+    include.dirs = FALSE,
+    ignore.case = TRUE
+  )
+  for (file in files) {
+    lines = readLines(file, warn = FALSE)
+    for (line in lines) {
+      line = trimws(line)
+      comment = substr(line, 1, 1) == "#"
+      if (skip_blanks & line == "")
+        next
+      if (skip_comments & comment)
+        next
+      loc = loc + 1
+    }
+  }
+  return(loc)
+}
