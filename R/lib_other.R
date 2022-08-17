@@ -197,6 +197,11 @@ loc = function(path,
     include.dirs = FALSE,
     ignore.case = TRUE
   )
+  
+  # exclude renv code files
+  files = grep(pattern = "/renv/", x = files, invert = TRUE, value = TRUE)
+  
+  # count loc
   for (file in files) {
     lines = readLines(file, warn = FALSE)
     for (line in lines) {

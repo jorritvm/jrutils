@@ -1,6 +1,11 @@
 # jrutils (develop)
 - tbc
 
+# jrutils v0.8.1
+## NOTES
+lib_other
+- bugfix in loc to exclude /renv/ code
+
 # jrutils v0.8.0
 ## NOTES
 general
