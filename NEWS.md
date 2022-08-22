@@ -1,5 +1,8 @@
 # jrutils (develop)
-- tbc
+## NOTES
+lib_other
+- split loc() into more versatile functions list_code_files() and lines_of_code_per_file()
+- kept loc() as as shortcut to both functions
 
 # jrutils v0.8.1
 ## NOTES

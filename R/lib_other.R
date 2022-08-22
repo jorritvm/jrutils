@@ -168,26 +168,25 @@ docvar = function(var, type = "return", cb = TRUE) {
 }
 
 
-#' count lines of code in R & python files in your project
+#' returns a character vector of code file paths 
 #'
-#' @param path root path of a project
-#' @param skip_comments does not count lines starting in '#'
-#' @param skip_blanks does not count blank lines (whitespace)
+#' @param path parent folder to look through recursively
+#' @param ext character vector of extensions to accept (case insensitive, no dot)
+#' @param skiplist character vector of pieces of path to skip
 #'
-#' @return integer lines of code
-#' @export
-loc = function(path,
-               skip_comments = FALSE,
-               skip_blanks = TRUE) {
-  # get the regex
-  extensions = c(".py", ".r")
+#' @return character vector of code file paths
+#' @export 
+list_code_files = function(path, 
+                           ext = c("py", "r"),
+                           skiplist = c("/renv/", "/venv/")) {
+  # build the extension regex
   regex = ""
-  for (ext in extensions) {
-    regex = paste0(ext, "$|", regex)
+  for (extension in ext) {
+    regex = paste0("\\.", extension, "$|", regex)
   }
   regex = substr(regex, 1, nchar(regex) - 1)
   
-  # read the files
+  # read all the files matching the extension regex
   loc = 0
   files = list.files(
     path,
@@ -198,11 +197,36 @@ loc = function(path,
     ignore.case = TRUE
   )
   
-  # exclude renv code files
-  files = grep(pattern = "/renv/", x = files, invert = TRUE, value = TRUE)
+  # exclude file paths that match the skiplist
+  for (skip_regex in skiplist) {
+    files = grep(pattern = skip_regex, 
+                 x = files, 
+                 invert = TRUE, 
+                 value = TRUE,
+                 ignore.case = TRUE)  
+  }
+  
+  return(files)
+}
+
+
+#' count lines of code in R & python files in your project
+#'
+#' @param files vector of file paths to count - see list_code_files()
+#' @param skip_comments does not count lines starting in '#'
+#' @param skip_blanks does not count blank lines (whitespace)
+#'
+#' @return integer lines of code
+#' @export
+#' @import data.table
+lines_of_code_per_file = function(files, 
+                               skip_comments = FALSE,
+                               skip_blanks = FALSE) {
+  dt = data.table(fpfn = files, fp = dirname(files), fn = basename(files), lines_of_code = 0)
   
   # count loc
   for (file in files) {
+    loc = 0
     lines = readLines(file, warn = FALSE)
     for (line in lines) {
       line = trimws(line)
@@ -213,6 +237,27 @@ loc = function(path,
         next
       loc = loc + 1
     }
+    dt[fpfn == file, lines_of_code := loc]
   }
+  return(dt)
+}
+
+
+#' shortcut for list_code_file and count_lines_of_code that defaults some arguments to make sense
+#'
+#' @param path root path of a project
+#'
+#' @return integer lines of code
+#' @export
+loc = function(path) {
+  
+  files = list_code_files(path, 
+                          ext = c("py", "r"),
+                          skiplist = c("/renv/", "/venv/"))
+  
+  dt_loc = count_lines_of_code(files, skip_comments = FALSE, skip_blanks = TRUE)
+  
+  loc = sum(dt_loc$line_of_code)
+  
   return(loc)
 }
