@@ -156,3 +156,64 @@ init_project_folder = function(foldername) {
   if (!dir.exists(fp)) dir.create(fp, showWarnings = FALSE, recursive = TRUE)
   return(fp)
 }
+
+
+#' convert a CSV from one regional style to another
+#'
+#' @param fp_in string path for input csv file in EU notation
+#' @param overwrite logical 
+#' @param direction currently supported choices are "eu2us" or "us2eu"
+#'
+#' @return output file path or NULL if error
+#' @export
+#'
+#' @import fs, data.table
+convert_csv_regional_style = function(fp_in, overwrite = FALSE, direction = "eu2us") {
+  # define proper list delimitars & decimal separators
+  if (direction == "eu2us") {
+    s_from = ";"
+    d_from = ","
+    s_to = ","
+    d_to = "."
+  } else if (direction == "us2eu") {
+    s_from = ","
+    d_from = "."
+    s_to = ";"
+    d_to = ","
+  } else {
+    print("Direction not known.")
+    return(NULL) 
+  }
+  
+  # read input file
+  tryCatch(expr = {
+    dt = data.table::fread(file = fp_in, 
+                           sep = s_from, 
+                           dec = d_from)
+  }, 
+  error = function(e) {
+    print("Input file does not exist.")
+    return(NULL)
+  })
+  
+  # define output file
+  if (overwrite) {
+    fp_out = fp_in 
+  } else {
+    fp_out = paste0(fs::path_ext_remove(fp_in), "_.", fs::path_ext(fp_in))
+  }
+  
+  # write output file
+  tryCatch(expr = {
+    data.table::fwrite(x = dt,
+                       file = fp_out,
+                       sep = s_to,
+                       dec = d_to)
+  }, 
+  error = function(e) {
+    print("Output file not writeable.")
+    return(NULL)
+  })
+  
+  return(fp_out)
+}

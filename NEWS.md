@@ -4,6 +4,9 @@ lib_other
 - bugfix in loc (syntax errors)
 
 ## NEW FEATURES
+lib_io
+- added convert_csv_regional_style()
+
 lib_other
 - split loc() into more versatile functions list_code_files() and lines_of_code_per_file()
 - kept loc() as as shortcut to both functions
