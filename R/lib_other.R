@@ -168,7 +168,7 @@ docvar = function(var, type = "return", cb = TRUE) {
 }
 
 
-#' returns a character vector of code file paths 
+#' returns a character vector of absolute code file paths 
 #'
 #' @param path parent folder to look through recursively
 #' @param ext character vector of extensions to accept (case insensitive, no dot)
@@ -255,9 +255,9 @@ loc = function(path) {
                           ext = c("py", "r"),
                           skiplist = c("/renv/", "/venv/"))
   
-  dt_loc = count_lines_of_code(files, skip_comments = FALSE, skip_blanks = TRUE)
+  dt_loc = lines_of_code_per_file(files, skip_comments = FALSE, skip_blanks = TRUE)
   
-  loc = sum(dt_loc$line_of_code)
+  loc = sum(dt_loc$lines_of_code)
   
   return(loc)
 }

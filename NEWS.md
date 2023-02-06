@@ -1,13 +1,24 @@
-# jrutils (develop)
+# jrutils v0.9.0
 ## NOTES
+lib_other
+- bugfix in loc (syntax errors)
+
+## NEW FEATURES
 lib_other
 - split loc() into more versatile functions list_code_files() and lines_of_code_per_file()
 - kept loc() as as shortcut to both functions
+
+lib_vector
+- added fractionalise() and rescale()
+
+<br />
 
 # jrutils v0.8.1
 ## NOTES
 lib_other
 - bugfix in loc to exclude /renv/ code
+
+<br />
 
 # jrutils v0.8.0
 ## NOTES
