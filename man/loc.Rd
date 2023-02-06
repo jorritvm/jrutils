@@ -2,20 +2,16 @@
 % Please edit documentation in R/lib_other.R
 \name{loc}
 \alias{loc}
-\title{count lines of code in R & python files in your project}
+\title{shortcut for list_code_file and count_lines_of_code that defaults to including comments and excluding blanks}
 \usage{
-loc(path, skip_comments = FALSE, skip_blanks = TRUE)
+loc(path)
 }
 \arguments{
 \item{path}{root path of a project}
-
-\item{skip_comments}{does not count lines starting in '#'}
-
-\item{skip_blanks}{does not count blank lines (whitespace)}
 }
 \value{
 integer lines of code
 }
 \description{
-count lines of code in R & python files in your project
+shortcut for list_code_file and count_lines_of_code that defaults to including comments and excluding blanks
 }

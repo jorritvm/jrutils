@@ -1,5 +1,8 @@
 # jrutils v0.9.0
 ## NOTES
+general
+- updated roxygen documentation
+
 lib_other
 - bugfix in loc (syntax errors)
 
