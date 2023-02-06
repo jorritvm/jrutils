@@ -94,3 +94,27 @@ nearest_val = function(look_near_these_values, in_these_values) {
   out = in_these_values[pos]
   return(out)
 }
+
+
+#' returns a vector where every element is replaced by its fraction of the total sum of the vector
+#'
+#' @param x a numerical vector
+#'
+#' @return a numerical vector containing fractional values (0 <= ... <= 1)
+#' @export
+fractionalise = function(x) {
+  return(x / sum(x))
+}
+
+
+#' rescale a numerical vector using a new total sum value
+#'
+#' @param x a numerica lvector
+#' @param total the new total sum to scale to
+#'
+#' @return a rescaled numerical vector with total sum = total argument
+#' @export
+rescale = function(x, total) {
+  y = fractionalise(x)
+  return(y * total)
+}
