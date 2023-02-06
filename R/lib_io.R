@@ -207,7 +207,7 @@ check_csv_region <- function(csv, n_lines = 5) {
 #' @return output file path or NULL if error
 #' @export
 #'
-#' @import fs, data.table
+#' @import fs data.table
 convert_csv_regional_style = function(fp_in, overwrite = FALSE, direction = "eu2us") {
   # define proper list delimitars & decimal separators
   if (direction == "eu2us") {
