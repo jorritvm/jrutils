@@ -215,3 +215,19 @@ remove_tail_na = function(dt) {
   out = dt[ seq( max(which(complete.cases(dt))) ) ]
   return(out)
 }
+
+
+#' rearrange the data.table columns in place so index columns are put to the left, 
+#' and data columns are put to the right
+#'
+#' @param dt data.table
+#' @param data_col_pattern regex to match data col names
+#'
+#' @return dt modified in place by setcolorder
+#' @export
+move_data_columns_right = function(dt, data_col_pattern) {
+  index_cols = grep(data_col_pattern, names(dt), value = TRUE, invert = TRUE)
+  data_cols = grep(data_col_pattern, names(dt), value = TRUE)
+  setcolordeFr(dt, c(index_cols, data_cols))
+  return(dt)
+}

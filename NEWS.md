@@ -11,6 +11,9 @@ lib_other
 - split loc() into more versatile functions list_code_files() and lines_of_code_per_file()
 - kept loc() as as shortcut to both functions
 
+lib_table
+- added move_data_columns_right()
+
 lib_vector
 - added fractionalise() and rescale()
 - added fill_A_NA_with_B()
