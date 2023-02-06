@@ -118,3 +118,22 @@ rescale = function(x, total) {
   y = fractionalise(x)
   return(y * total)
 }
+
+
+#' fill NA in vector A with values from vector B
+#'
+#' @param a vector containing NA to replace
+#' @param b vector containing substitute values, must be same length as a
+#'
+#' @return improved vector a
+#' @export
+#' @examples
+#' a = c(1,NA,3,NA)
+#' b = 1:4
+#' fill_A_NA_with_B(a,b) 
+fill_A_NA_with_B = function(a, b) {
+  if (length(a) != length(b)) stop("A and B must be same length")
+  nas = which(is.na(a))
+  a[nas] = b[nas]
+  return(a)
+}

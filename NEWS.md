@@ -10,6 +10,7 @@ lib_other
 
 lib_vector
 - added fractionalise() and rescale()
+- added fill_A_NA_with_B()
 
 <br />
 

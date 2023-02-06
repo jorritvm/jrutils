@@ -243,7 +243,7 @@ lines_of_code_per_file = function(files,
 }
 
 
-#' shortcut for list_code_file and count_lines_of_code that defaults some arguments to make sense
+#' shortcut for list_code_file and count_lines_of_code that defaults to including comments and excluding blanks
 #'
 #' @param path root path of a project
 #'
