@@ -5,6 +5,7 @@ lib_other
 
 ## NEW FEATURES
 lib_io
+- added check_csv_region()
 - added convert_csv_regional_style()
 
 lib_other
