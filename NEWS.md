@@ -4,6 +4,10 @@ lib_other
 - bugfix in loc (syntax errors)
 
 ## NEW FEATURES
+lib_list
+- new lib file in the jrutils package focused on list operations
+- added merge_lists_by_key
+
 lib_io
 - added check_csv_region()
 - added convert_csv_regional_style()
